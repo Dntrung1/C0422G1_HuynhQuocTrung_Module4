@@ -20,7 +20,7 @@ public class CalculatorController {
     }
 
     @PostMapping("/calculator")
-    public String calculator(@RequestParam String num1, String num2, String operand, Model model) {
+    public String calculator(@RequestParam String num1, @RequestParam String num2, @RequestParam String operand, Model model) {
         model.addAttribute("result", iCalculatorService.result(num1, num2, operand));
         model.addAttribute("num1", num1);
         model.addAttribute("num2", num2);
