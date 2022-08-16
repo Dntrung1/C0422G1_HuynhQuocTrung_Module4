@@ -14,16 +14,16 @@
 <form action="/conversion" method="get">
     <div>
         <h1>nhập số tiền chuyển đổi</h1>
-        <input type="number" name="soCanChuyenDoi" value="${soCanChuyenDoi}" required>
+        <input type="number" name="soCanChuyenDoi" value="${usd}" required>
     </div>
     <div>
         <h1>nhập tỉ giá</h1>
-        <input type="number" name="tiGia" value="${tiGia}" required>
+        <input type="number" name="tiGia" value="${rate}" required>
     </div>
     <button type="submit">Tính</button>
 </form>
 <h1>
-    <h1>Kết quả:${ketqua}</h1>
+    <h1>Kết quả:${result}</h1>
 </h1>
 </body>
 </html>

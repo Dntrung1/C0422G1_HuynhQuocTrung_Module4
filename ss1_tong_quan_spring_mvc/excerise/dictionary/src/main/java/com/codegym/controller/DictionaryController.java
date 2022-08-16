@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DictionaryController {
     @Autowired
-    IDictionaryService iDictionaryService;
+    private IDictionaryService iDictionaryService;
     @GetMapping("/dictionary")
    public String dictionary(@RequestParam String word, Model model){
-        String ketQua = iDictionaryService.dictionary(word);
+        String result = iDictionaryService.dictionary(word);
         model.addAttribute("word",word);
-        model.addAttribute("ketQua",ketQua);
+        model.addAttribute("result",result);
         return "index";
    }
 }

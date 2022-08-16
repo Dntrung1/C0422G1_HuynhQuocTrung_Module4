@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConversionService implements IConversionService {
     @Override
-    public double conversion(String soCanChuyenDoi, String tiGia) {
-        return (Double.parseDouble(soCanChuyenDoi) * Double.parseDouble(tiGia));
+    public double conversion(String usd, String rate) {
+        return (Double.parseDouble(usd) * Double.parseDouble(rate));
     }
+
 }

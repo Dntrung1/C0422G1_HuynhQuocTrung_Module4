@@ -18,7 +18,7 @@
     <input type="text" name="word" value="${word}">
     <button type="submit">Dịch</button>
   </div>
-    <h1>${ketQua}</h1>
+    <h1>${result}</h1>
   </form>
   </body>
 </html>

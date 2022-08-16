@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ConversionController {
     @Autowired
-    IConversionService iConversionService;
+    private IConversionService iConversionService;
     @GetMapping("/conversion")
-    public String conversion(@RequestParam String soCanChuyenDoi, String tiGia, Model model){
-        if (soCanChuyenDoi.equals("")||tiGia.equals("")){
-            model.addAttribute("ketqua","Vui lòng nhập vào");
+    public String conversion(@RequestParam String usd, String rate, Model model){
+        if (usd.equals("")||rate.equals("")){
+            model.addAttribute("result","Vui lòng nhập vào");
         }else {
-            double soTien = iConversionService.conversion(soCanChuyenDoi,tiGia);
-            model.addAttribute("ketqua",soTien);
-            model.addAttribute("soCanChuyenDoi",soCanChuyenDoi);
-            model.addAttribute("tiGia",tiGia);
+            double result = iConversionService.conversion(usd,rate);
+            model.addAttribute("result",result);
+            model.addAttribute("usd",usd);
+            model.addAttribute("rate",rate);
         }
        return "/index";
     }
