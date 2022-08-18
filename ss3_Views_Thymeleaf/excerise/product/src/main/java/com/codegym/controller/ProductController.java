@@ -32,7 +32,7 @@ public class ProductController {
     @PostMapping("/save")
     public String save(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         iProductService.addProduct(product);
-        redirectAttributes.addFlashAttribute("messs", "Thêm mới thành công");
+        redirectAttributes.addFlashAttribute("mess", "Thêm mới thành công");
         return "redirect:/";
     }
 
@@ -51,7 +51,7 @@ public class ProductController {
     @PostMapping("/edit")
     public String edit(@ModelAttribute Product product, RedirectAttributes redirectAttributes) {
         iProductService.updateProduct(product);
-        redirectAttributes.addFlashAttribute("messs", "Cập nhật thành công");
+        redirectAttributes.addFlashAttribute("mess", "Cập nhật thành công");
         return "redirect:/";
     }
 
