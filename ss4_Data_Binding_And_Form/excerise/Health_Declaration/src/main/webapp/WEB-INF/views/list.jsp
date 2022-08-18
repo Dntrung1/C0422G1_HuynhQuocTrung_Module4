@@ -15,13 +15,6 @@
     <tr>
         <th>STT</th>
         <th>Họ tên</th>
-        <th>Năm sinh</th>
-        <th>Giới tính</th>
-        <th>Quốc tịch</th>
-        <th>CMND</th>
-        <th>Thông tin đi lại</th>
-        <th>Phương tiện</th>
-        <th>Số ghê</th>
         <th colspan="3">Ngày khởi hành</th>
         <th colspan="3">Ngày kết thúc</th>
         <th>Lưu ý</th>
@@ -32,18 +25,6 @@
         <tr>
             <td>${status.count}</td>
             <td>${medical.name}</td>
-            <td>${medical.yearOfBirth}</td>
-            <c:if test="${medical.gender==true}">
-                <td>Nam</td>
-            </c:if>
-            <c:if test="${medical.gender==false}">
-                <td>Nữ</td>
-            </c:if>
-            <td>${medical.nationality}</td>
-            <td>${medical.identityCard}</td>
-            <td>${medical.travelInformation}</td>
-            <td>${medical.vehicleNumber}</td>
-            <td>${medical.seats}</td>
             <td>${medical.departureDay}</td>
             <td>${medical.departureMonth}</td>
             <td>${medical.departureYear}</td>

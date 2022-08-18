@@ -52,8 +52,7 @@ public class HealthDeclarationController {
 
     @GetMapping("/showEdit")
     public String showEdit(@RequestParam int id, Model model) {
-        model.addAttribute("edit", iMedicalService.findid(id));
-        model.addAttribute("health", new MedicalDeclaration());
+        model.addAttribute("health", iMedicalService.findid(id));
         model.addAttribute("day", iDayService.findAllDay());
         model.addAttribute("month", iMonthService.findAllMonth());
         model.addAttribute("year", iYearService.findAllYear());
