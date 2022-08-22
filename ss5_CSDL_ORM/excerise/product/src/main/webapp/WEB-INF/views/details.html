@@ -13,6 +13,7 @@
     <div>Giá: <span th:text="${product.price}"></span></div>
     <div>Mô tả thêm: <span th:text="${product.note}"></span></div>
     <div>Nhà sản xuất: <span th:text="${product.producer}"></span></div>
+    <a class="btn btn-warning " th:href="@{showEdit(id=${product.id})}">Chỉnh sửa</a>
 </div>
 <script th:replace="~{common :: js}"></script>
 </body>

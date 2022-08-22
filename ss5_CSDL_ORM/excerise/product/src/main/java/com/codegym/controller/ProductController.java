@@ -19,7 +19,7 @@ public class ProductController {
 
     @GetMapping(value = {"/","/search"})
     public String showList(@RequestParam(required = false,defaultValue = "") String name, Model model) {
-        model.addAttribute("list", iProductService.showList(name));
+        model.addAttribute("list", iProductService.showList());
         return "list";
     }
 
