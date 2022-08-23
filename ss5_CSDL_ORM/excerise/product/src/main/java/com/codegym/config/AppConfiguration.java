@@ -32,11 +32,6 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     }
 
     @Bean
-    public ProductService productService(){
-        return new ProductService();
-    }
-
-    @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);

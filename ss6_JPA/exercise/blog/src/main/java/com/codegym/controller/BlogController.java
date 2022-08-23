@@ -37,8 +37,7 @@ public class BlogController {
 
     @GetMapping("/showEdit")
     public String showEdit(@RequestParam int id, Model model) {
-        Optional<Blog> blog = iBlogService.findById(id);
-        model.addAttribute("blog", blog.get());
+        model.addAttribute("blog", iBlogService.findById(id).get());
         return "edit";
     }
 
