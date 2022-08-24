@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common :: css}"></th:block>
+</head>
+<body>
+<nav th:replace="~{common :: header}"></nav>
+<a class="btn btn-secondary" href="/">Quay lại</a>
+<div class="container">
+    <div>Name: <span th:text="${product.id}"></span></div>
+    <div>Giá: <span th:text="${product.price}"></span></div>
+    <div>Mô tả thêm: <span th:text="${product.note}"></span></div>
+    <div>Nhà sản xuất: <span th:text="${product.producer}"></span></div>
+    <a class="btn btn-warning " th:href="@{showEdit(id=${product.id})}">Chỉnh sửa</a>
+</div>
+<script th:replace="~{common :: js}"></script>
+</body>
+</html>

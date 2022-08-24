@@ -7,56 +7,50 @@
 </head>
 <body>
 <nav th:replace="~{common :: header}"></nav>
-<div>
-    <form action="/search" id="formSeachCategory">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
-               th:value="${search}">
-        <button class="btn btn-outline-success" type="button" th:onclick="|submitForm()|">Search</button>
-        <div th:object="${blog}">
-        <select class="form-select" aria-label="Default select example" type="text" onchange="submitForm()"
-                name="category" th:field="*{category}">
-            <option selected value="0">Thể loại</option>
-            <option th:each="cate : ${categorylist}"
-                    th:value="${cate.id}"
-                    th:text="${cate.category}"></option>
-        </select>
-        </div>
-    </form>
-</div>
 <div class="container-fluid">
     <a class="btn btn-info" href="/add">Thêm mới</a>
 </div>
+<form action="/">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Tim kiếm" aria-label="Recipient's username" name="search"
+               aria-describedby="button-addon2">
+        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Tìm</button>
+    </div>
+</form>
 <p th:text="${mess}"></p>
 <table class="table table-success table-striped">
     <tr>
         <th>STT</th>
-        <th>Tên bài viết</th>
-        <th>Thể loại</th>
+        <th>NAME</th>
         <th colspan="3">Chức Năng</th>
     </tr>
-    <tr th:each="blog, status : ${list.content}">
-        <td th:text="${status.count}"></td>
-        <td th:text="${blog.description}"></td>
-        <td th:text="${blog.category.category}"></td>
+    <tr th:each="product, status : ${list}">
+        <td th:text="${status.count + list.number * 2}"></td>
+        <td th:text="${product.name}"></td>
         <td>
-            <a class="btn btn-primary " th:href="@{showDetails(id=${blog.id})}">Xem chi tiết</a>
+            <a class="btn btn-primary " th:href="@{showDetails(id=${product.id})}">Xem chi tiết</a>
         </td>
         <td>
-            <a class="btn btn-warning " th:href="@{showEdit(id=${blog.id})}">Chỉnh sửa</a>
+            <a class="btn btn-warning " th:href="@{showEdit(id=${product.id})}">Chỉnh sửa</a>
         </td>
         <td>
             <button class="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#deleteModal"
-                    th:onclick=|setIdToFormDelete(${blog.id})|>
+                    th:onclick=|setIdToFormDelete(${product.id})|>
                 Delete
             </button>
         </td>
     </tr>
 </table>
-<div>
-
+<div class="container-fluid">
+    <a th:href="@{/(page=${list.number - 1})}">Trước</a>
+    <span th:text="${list.number + 1}"></span>
+    /
+    <span th:text="${list.totalPages}"></span>
+    <a th:href="@{/(page=${list.number + 1})}">Sau</a>
 </div>
+<!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -80,9 +74,6 @@
 </form>
 
 <script>
-    function submitForm(){
-        document.getElementById("formSeachCategory").submit()
-    }
     function setIdToFormDelete(id) {
         document.getElementById("idInput").value = id;
     }

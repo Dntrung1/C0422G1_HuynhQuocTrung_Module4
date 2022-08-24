@@ -33,13 +33,15 @@ public class BlogController {
     @GetMapping(value = {"/","/search"})
     public String listBlog(@RequestParam(required = false,defaultValue = "") String search,
                            @RequestParam(required = false,defaultValue = "0") Integer category, Model model,
-                           @PageableDefault(sort = "id", direction = Sort.Direction.DESC)
-            Pageable pageable, @RequestParam("p") Optional<Integer> p) {
-        pageable = PageRequest.of(p.orElse(0), 10);
+                           @PageableDefault( sort = "id", direction = Sort.Direction.DESC, size = 5)
+            Pageable pageable) {
         Category categoryServiceById = iCategoryService.findById(category);
         Page<Blog> page = iBlogService.findAll(pageable,search,categoryServiceById);
         model.addAttribute("list", page);
+        model.addAttribute("pageable", pageable);
         model.addAttribute("categorylist", iCategoryService.findAll());
+        model.addAttribute("search", search);
+        model.addAttribute("blog", iBlogService.findById(category));
         return "list";
     }
 
