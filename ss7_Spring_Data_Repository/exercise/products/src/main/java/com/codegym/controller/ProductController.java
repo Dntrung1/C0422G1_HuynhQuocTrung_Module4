@@ -25,7 +25,7 @@ public class ProductController {
     public String showList( Model model,@PageableDefault(size = 2) Pageable pageable,
                             @RequestParam(defaultValue = "") String search) {
         model.addAttribute("list", iProductService.showList(pageable,search));
-        model.addAttribute("pageable", pageable);
+        model.addAttribute("search", search);
         return "list";
     }
 

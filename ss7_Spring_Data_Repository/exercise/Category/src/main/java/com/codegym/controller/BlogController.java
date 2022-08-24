@@ -41,7 +41,8 @@ public class BlogController {
         model.addAttribute("pageable", pageable);
         model.addAttribute("categorylist", iCategoryService.findAll());
         model.addAttribute("search", search);
-        model.addAttribute("blog", iBlogService.findById(category));
+        model.addAttribute("category", iCategoryService.findById(category));
+        model.addAttribute("catelogy", category);
         return "list";
     }
 
