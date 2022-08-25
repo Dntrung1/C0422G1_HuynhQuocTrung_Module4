@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/create" method="post" th:object="${formDto}">
+    <div class="container">
+        <div>
+            <h1>Registration</h1>
+        </div>
+        <div>
+            <label>First Name</label>
+            <input class="form-control" type="text" th:field="*{firstName}">
+        </div>
+        <div th:errors="*{firstName}"></div>
+        <div>
+            <label>Last Name</label>
+            <input class="form-control" type="text" th:field="*{lastName}">
+        </div>
+        <div th:errors="*{lastName}"></div>
+        <div>
+            <label>Phone</label>
+            <input class="form-control" type="number" th:field="*{phone}">
+        </div>
+        <div th:errors="*{phone}"></div>
+        <div>
+            <label>Birthday</label>
+            <input class="form-control" type="date" th:field="*{birthday}">
+        </div>
+        <div th:errors="*{birthday}"></div>
+        <div>
+            <label>Email</label>
+            <input class="form-control" type="text" th:field="*{email}">
+        </div>
+        <div th:errors="*{email}"></div>
+        <div class="m-2">
+            <button class="btn btn-success" type="submit">Save</button>
+            <a class="btn btn-secondary" href="/">Resest</a>
+        </div>
+    </div>
+</form>
+</body>
+</html>
