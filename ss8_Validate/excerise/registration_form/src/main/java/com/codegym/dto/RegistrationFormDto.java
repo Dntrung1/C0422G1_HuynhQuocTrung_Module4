@@ -22,7 +22,7 @@ public class RegistrationFormDto implements Validator {
     @Pattern(regexp = "[0-9]{11}", message = "11-digit phone number")
     @NotBlank
     private String phone;
-    @NotBlank
+
     private String birthday;
     @Email
     @NotBlank
@@ -89,13 +89,17 @@ public class RegistrationFormDto implements Validator {
     public void validate(Object target, Errors errors) {
         RegistrationFormDto registrationFormDto = (RegistrationFormDto) target;
         LocalDate localDate = LocalDate.now();
-        if (birthday != null) {
-            LocalDate birthDay = LocalDate.parse(registrationFormDto.getBirthday());
-            int age = Period.between(localDate, birthDay).getYears();
+        LocalDate birthday = null;
+        int age = 0;
+        try {
+            birthday = LocalDate.parse(registrationFormDto.getBirthday());
+            age = Period.between(localDate, birthday).getYears();
             if (age < 18) {
                 errors.rejectValue("birthday", "birthday", "\n" +
                         "your age must be over 18");
             }
+        } catch (Exception e) {
+            errors.rejectValue("birthday", "abc", "Vui lòng nhập vào");
         }
     }
 }
