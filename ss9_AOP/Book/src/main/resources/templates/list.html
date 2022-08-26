@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Tên sách</th>
+        <th>Xem chi tiết</th>
+    </tr>
+    <tr th:each="book , loop : ${list}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${book.nameBook}"></td>
+        <td >
+            <a th:href="@{/detail(id=${book.id})}">Xem</a>
+        </td>
+    </tr>
+</table>
+<a th:href="@{/pay}">Trả sách</a>
+</body>
+</html>

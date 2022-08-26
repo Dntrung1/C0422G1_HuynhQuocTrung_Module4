@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="/updateMusic" method="post" th:object="${musicupdate}">
-    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{id}" name="id">
     <div class="container">
         <div>
             <h1>Chỉnh sửa bài hát</h1>

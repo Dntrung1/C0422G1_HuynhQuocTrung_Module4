@@ -51,12 +51,13 @@ public class MusicController {
 
     @PostMapping("/updateMusic")
     public String update(@ModelAttribute(name = "musicupdate") @Valid MusicDto musicDto,
-                         BindingResult bindingResult){
+                         BindingResult bindingResult,
+                         @RequestParam int id){
         if (bindingResult.hasErrors()){
             return "update";
         }
         Music music = new Music();
-        music.setId(musicDto.getId());
+        music.setId(id);
         BeanUtils.copyProperties(musicDto,music);
         iMusicService.create(music);
         return "redirect:/";

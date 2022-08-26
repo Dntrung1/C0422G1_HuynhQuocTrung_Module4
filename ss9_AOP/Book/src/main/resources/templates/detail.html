@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="${mess}"></p>
+<h1>Tên sách:<span th:text="${detail.nameBook}"></span></h1>
+<h2>Mô tả:<span th:text="${detail.describes}"></span></h2>
+<h4>Tác giả:<span th:text="${detail.author}"></span></h4>
+<a th:href="@{/borrow(id=${detail.id})}">Thuê</a>
+</body>
+</html>
