@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khách hàng</title>
+    <th:block th:replace="~{common :: css}"></th:block>
+</head>
+<body>
+<nav th:replace="~{common :: nav}"></nav>
+<div class="m-3">
+    <a class="btn btn-primary" href="/customer/create">Thêm mới</a>
+</div>
+<table class="table table-success table-striped">
+    <tr>
+        <th>STT</th>
+        <th>Họ tên</th>
+        <th>Số điện thoại</th>
+        <th>Loại khách</th>
+        <th colspan="2">Chức Năng</th>
+    </tr>
+    <tr th:each="cus, loop : ${listcustomer}">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${cus.name}"></td>
+        <td th:text="${cus.phone}"></td>
+        <td th:text="${cus.customerType.name}"></td>
+        <td></td>
+        <td>
+            <a class="btn btn-warning" href="#">Chỉnh sửa</a>
+        </td>
+        <td>
+            <button class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteModal"
+                    th:onclick=|setIdToFormDelete(1)|>
+                Xóa
+            </button>
+        </td>
+    </tr>
+</table>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete confirm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn xóa không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="submitFormDelete()">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/delete" id="formDelete">
+    <input type="hidden" id="idInput" name="id">
+</form>
+<script>
+    function setIdToFormDelete(id) {
+        document.getElementById("idInput").value = id;
+    }
+    function submitFormDelete() {
+        document.getElementById("formDelete").submit();
+    }
+</script>
+<footer th:replace="~{common :: footer}"></footer>
+<script th:replace="~{common :: js}"></script>
+</body>
+</html>

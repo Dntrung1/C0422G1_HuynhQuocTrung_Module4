@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:replace="~{common :: css}"></th:block>
+</head>
+<body>
+<nav th:replace="~{common :: nav}"></nav>
+<div class="container m-3">
+<form>
+    <div class="form-outline mb-4">
+        <select class="form-select" aria-label="Default select example"
+                name="code" id="selectService" onchange="displayInput()">
+            <option selected>Loại dịch vụ</option>
+            <option value="1">Villa</option>
+            <option value="2">Room</option>
+            <option value="3">House</option>
+        </select>
+    </div>
+
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form6Example1">Tên dịch vụ</label>
+                <input type="text" id="form6Example1" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-outline">
+                <label class="form-label" for="form6Example2">Số lượng người tối đa</label>
+                <input type="text" id="form6Example2" class="form-control" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example3">Diện tích sử dụng</label>
+        <input type="text" id="form6Example3" class="form-control" />
+    </div>
+
+    <!-- Text input -->
+    <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example4">Chi phí thuê</label>
+        <input type="text" id="form6Example4" class="form-control" />
+    </div>
+
+    <!-- Number input -->
+    <div class="form-outline mb-4">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>kiểu thuê</option>
+            <option value="1">Năm</option>
+            <option value="2">Tháng</option>
+            <option value="3">Ngày</option>
+            <option value="4">Giờ</option>
+        </select>
+    </div>
+
+    <div class="form-outline mb-4" id="divStandardRoom">
+        <label class="form-label" for="standardRoom">Tiêu chuẩn phòng</label>
+        <input type="text" id="standardRoom" class="form-control"/>
+    </div>
+    <div class="form-outline mb-4" id="divDescriptionOtherConvenience">
+        <label class="form-label" for="descriptionOtherConvenience">Mô tả tiện nghi khác</label>
+        <input type="text" id="descriptionOtherConvenience" class="form-control"/>
+    </div>
+    <div class="form-outline mb-4" id="divPoolArea">
+        <label class="form-label" for="poolArea">Diện tích hồ bơi</label>
+        <input type="text" id="poolArea" class="form-control"/>
+    </div>
+    <div class="form-outline mb-4" id="divNumberOfFloors">
+        <label class="form-label" for="numberOfFloors">Số tầng</label>
+        <input type="text" id="numberOfFloors" class="form-control"/>
+    </div>
+    <div class="form-outline mb-4" id="divFacilityFree">
+        <label class="form-label" for="facilityFree">Dịch vụ miễn phí đi kèm</label>
+        <input type="text" id="facilityFree" class="form-control"/>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary btn-block mb-4">Lưu</button>
+</form>
+</div>
+
+<script>
+    function displayInput() {
+        let value = document.getElementById("selectService").value;
+        let standardRoom = document.getElementById("divStandardRoom");
+        let descriptionOtherConvenience = document.getElementById("divDescriptionOtherConvenience");
+        let poolArea = document.getElementById("divPoolArea");
+        let numberOfFloors = document.getElementById("divNumberOfFloors");
+        let facilityFree = document.getElementById("divFacilityFree");
+        switch (value) {
+            case "1":
+                standardRoom.style.display = "block"
+                descriptionOtherConvenience.style.display = "block"
+                poolArea.style.display = "block"
+                numberOfFloors.style.display = "block"
+                facilityFree.style.display = "none"
+                break;
+            case "2":
+                standardRoom.style.display = "none"
+                descriptionOtherConvenience.style.display = "none"
+                poolArea.style.display = "none"
+                numberOfFloors.style.display = "none"
+                facilityFree.style.display = "block"
+                break;
+            case "3":
+                standardRoom.style.display = "block"
+                descriptionOtherConvenience.style.display = "block"
+                poolArea.style.display = "none"
+                numberOfFloors.style.display = "block"
+                facilityFree.style.display = "none"
+                break;
+            case "none":
+                standardRoom.style.display = "none"
+                descriptionOtherConvenience.style.display = "none"
+                poolArea.style.display = "none"
+                numberOfFloors.style.display = "none"
+                facilityFree.style.display = "none"
+                break;
+        }
+    }
+</script>
+<footer th:replace="~{common :: footer}"></footer>
+<script th:replace="~{common :: js}"></script>
+</body>
+</html>
