@@ -1,61 +1,46 @@
 package com.codegym.dto;
 
 public class CustomerDto {
-    private int idCustomer;
-    private String name;
+    private Integer idCustomer;
+    private String customerName;
     private String birthday;
     private boolean gender;
     private String idCard;
     private String phone;
     private String email;
     private String address;
-    private String customerTypeId;
-    private boolean status;
+    private boolean customerStatus;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(int idCustomer, String name, String birthday, boolean gender,
-                       String idCard, String phone, String email, String address, String customerTypeId, boolean status) {
+    public CustomerDto(Integer idCustomer, String customerName, String birthday,
+                       boolean gender, String idCard, String phone, String email, String address, boolean customerStatus) {
         this.idCustomer = idCustomer;
-        this.name = name;
+        this.customerName = customerName;
         this.birthday = birthday;
         this.gender = gender;
         this.idCard = idCard;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.customerTypeId = customerTypeId;
-        this.status = status;
+        this.customerStatus = customerStatus;
     }
 
-    public CustomerDto(String name, String birthday, boolean gender,
-                       String idCard, String phone, String email, String address, String customerTypeId, boolean status) {
-        this.name = name;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.idCard = idCard;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.customerTypeId = customerTypeId;
-        this.status = status;
-    }
-
-    public int getIdCustomer() {
+    public Integer getIdCustomer() {
         return idCustomer;
     }
 
-    public void setIdCustomer(int idCustomer) {
+    public void setIdCustomer(Integer idCustomer) {
         this.idCustomer = idCustomer;
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public String getBirthday() {
@@ -106,19 +91,11 @@ public class CustomerDto {
         this.address = address;
     }
 
-    public String getCustomerTypeId() {
-        return customerTypeId;
+    public boolean isCustomerStatus() {
+        return customerStatus;
     }
 
-    public void setCustomerTypeId(String customerTypeId) {
-        this.customerTypeId = customerTypeId;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setCustomerStatus(boolean customerStatus) {
+        this.customerStatus = customerStatus;
     }
 }

@@ -19,21 +19,21 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Customer findById(int id) {
-        return null;
+        return iCustomerRepository.findById(id).orElse(null);
     }
 
     @Override
     public void createCustomer(Customer customer) {
-
+        iCustomerRepository.save(customer);
     }
 
     @Override
     public void updateCustomer(Customer customer) {
-
+        iCustomerRepository.save(customer);
     }
 
     @Override
     public void deleteCustomer(int id) {
-
+        iCustomerRepository.deleteById(id);
     }
 }

@@ -16,22 +16,22 @@
         <th>Họ tên</th>
         <th>Số điện thoại</th>
         <th>Loại khách</th>
-        <th colspan="2">Chức Năng</th>
+        <th colspan="3">Chức Năng</th>
     </tr>
     <tr th:each="cus, loop : ${listcustomer}">
         <td th:text="${loop.count}"></td>
-        <td th:text="${cus.name}"></td>
+        <td th:text="${cus.customerName}"></td>
         <td th:text="${cus.phone}"></td>
         <td th:text="${cus.customerType.name}"></td>
         <td></td>
         <td>
-            <a class="btn btn-warning" href="#">Chỉnh sửa</a>
+            <a class="btn btn-warning" th:href="@{/customer/showedit(id=${cus.idCustomer})}">Chỉnh sửa</a>
         </td>
         <td>
             <button class="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#deleteModal"
-                    th:onclick=|setIdToFormDelete(1)|>
+                    th:onclick=|setIdToFormDelete(${cus.idCustomer})|>
                 Xóa
             </button>
         </td>
@@ -54,7 +54,7 @@
         </div>
     </div>
 </div>
-<form action="/delete" id="formDelete">
+<form action="/customer/deletecustomer" method="post" id="formDelete">
     <input type="hidden" id="idInput" name="id">
 </form>
 <script>
