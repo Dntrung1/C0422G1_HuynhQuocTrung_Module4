@@ -43,8 +43,7 @@ public class ProductController {
 
     @GetMapping("/buy")
     public String goToCart(@RequestParam int id,
-                           @ModelAttribute(value = "cartList") List<CartProduct> cartList,
-                           RedirectAttributes redirectAttributes) {
+                           @ModelAttribute(value = "cartList") List<CartProduct> cartList) {
         Product product = iProductService.findById(id);
         CartProduct cartProduct = new CartProduct();
         BeanUtils.copyProperties(product, cartProduct);
