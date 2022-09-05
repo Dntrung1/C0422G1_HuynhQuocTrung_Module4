@@ -29,6 +29,19 @@ public class Customer {
     @JoinColumn(name = "customer_type", referencedColumnName = "idCustomerType")
     private CustomerType customerType;
 
+    public Customer(Integer idCustomer, String customerName, String birthday, boolean gender, String idCard,
+                    String phone, String email, String address, boolean customerStatus, CustomerType customerType) {
+        this.idCustomer = idCustomer;
+        this.customerName = customerName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.customerStatus = customerStatus;
+        this.customerType = customerType;
+    }
 
     public Customer() {
     }

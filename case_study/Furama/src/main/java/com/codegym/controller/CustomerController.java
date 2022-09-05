@@ -45,7 +45,7 @@ public class CustomerController {
 
     @PostMapping("/updatecustomer")
     public String editCustomer(@ModelAttribute Customer customer){
-        iCustomerService.createCustomer(customer);
+        iCustomerService.updateCustomer(customer);
         return "redirect:/customer/list";
     }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm mới</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<h1>Thêm mới</h1>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default">producer</span>
+    <input id="inputProducer" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default1">model</span>
+    <input id="inputModel" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="inputGroup-sizing-default2">price</span>
+    <input id="inputPrice" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+<div>
+    <button id="btnCreate" type="button" class="btn btn-primary btn-block bg-momo">
+        Create
+    </button>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+    $("#btnCreate").click(function() {
+        let producer = $("#inputProducer").val();
+        let model = $("#inputModel").val();
+        let price = $("#inputPrice").val();
+
+        let phoneObj = {
+            producer: producer,
+            model: model,
+            price:price
+        };
+
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            url: "http://localhost:8080/phoneRests/create",
+            data: JSON.stringify(phoneObj),
+            success: function(resultSuccess){
+                alert('register successfully!')
+            },
+            error: function(resultError) {
+                alert('error');
+            }
+        });
+    });
+</script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

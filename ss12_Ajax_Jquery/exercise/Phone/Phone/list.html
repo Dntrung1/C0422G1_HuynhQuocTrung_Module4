@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Phone</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<a class="btn btn-info" href="http://localhost:63343/phone/create.html?_ijt=2p4ivi4rec3i3uc2h477m8nvgq">Thêm mới</a>
+<div>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th>Stt</th>
+            <th>Id</th>
+            <th>producer</th>
+            <th>model</th>
+            <th>price</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody id="bodyPhone">
+
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete confirm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn xóa không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" id="submitFormDelete" data-bs-dismiss="modal">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+<script>
+    let curPage = 0;
+    function getPagePhone() {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/phoneRests",
+            success: function(phone){
+                let phoneList = phone;
+                console.log(phoneList);
+                let htmlStr = '';
+
+                for (let i = 0; i < phoneList.length; i++) {
+                    htmlStr += `<tr>
+                        <td>${i + 1}</td>
+                        <td>${phoneList[i].id}</td>
+                        <td>${phoneList[i].producer}</td>
+                        <td>${phoneList[i].model}</td>
+                        <td>${phoneList[i].price}</td>
+                        <td>
+                                <button class="btn btn-danger"
+                    data-bs-toggle="modal"
+                    data-bs-target="#deleteModal"
+                    id="setIdToFormDelete" value="${phoneList[i].id}">
+                Xóa
+            </button>
+                        </td>
+                    </tr>`;
+                }
+                $("#bodyPhone").html(htmlStr);
+            },
+            error: function(resultError) {
+
+            }
+        });
+    }
+
+    $("#submitFormDelete").click(function() {
+        let id = $("#setIdToFormDelete").val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/phoneRests/delete?id=" + id,
+            success: function(resultSuccess){
+                alert('register successfully!')
+                getPagePhone(curPage);
+            },
+            error: function(resultError) {
+                alert('error');
+            }
+        });
+    });
+
+    getPagePhone(curPage);
+</script>
+
+
+
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

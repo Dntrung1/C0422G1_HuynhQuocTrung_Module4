@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div>Danh sách Blog</div>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+           aria-describedby="button-addon2" id="inputSearch">
+    <button class="btn btn-outline-secondary" type="button" id="btnSearch">Search</button>
+</div>
+<div>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th>Stt</th>
+            <th>Id</th>
+            <th>description</th>
+            <th>detail</th>
+            <th>author</th>
+        </tr>
+        </thead>
+        <tbody id="bodyBlog">
+
+        </tbody>
+    </table>
+</div>
+<div>
+    <button id="load">Tải thêm</button>
+</div>
+<script src="js/jquery-3.6.0.min.js"></script>
+
+<script>
+    let curPage = 0;
+    let add =2;
+    let size = 5;
+    function getPageBlog(pageNumber) {
+        let search =  $("#inputSearch").val();
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/blogRests?page=" + pageNumber+"&size="+ size +"&search="+search,
+            success: function(blogPage){
+                let blogList = blogPage.content;
+                let htmlStr = '';
+                for (let i = 0; i < blogList.length; i++) {
+                    htmlStr += `<tr>
+                        <td>${i + 1}</td>
+                        <td>${blogList[i].id}</td>
+                        <td>${blogList[i].description}</td>
+                        <td>${blogList[i].detail}</td>
+                        <td>${blogList[i].author}</td>
+                    </tr>`;
+                }
+
+                $("#bodyBlog").html(htmlStr);
+            },
+            error: function(resultError) {
+
+            }
+        });
+    }
+
+    $("#load").click(function () {
+        size+=add;
+        getPageBlog(curPage,size)
+    });
+
+    getPageBlog(curPage);
+
+    $("#btnSearch").click(function () {
+        getPageBlog(curPage);
+    });
+</script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -9,78 +9,73 @@
 <body>
 <nav th:replace="~{common :: nav}"></nav>
 <div class="container m-3">
-<form>
+<form action="/facility/saveFacility" method="post" th:object="${facility}">
     <div class="form-outline mb-4">
         <select class="form-select" aria-label="Default select example"
-                name="code" id="selectService" onchange="displayInput()">
-            <option selected>Loại dịch vụ</option>
-            <option value="1">Villa</option>
-            <option value="2">Room</option>
-            <option value="3">House</option>
+                name="code" id="selectService" th:field="*{facilityType}" onchange="displayInput()">
+            <option value="0" selected>Loại dịch vụ</option>
+            <option th:each="facType : ${facilityType}"
+                    th:value="${facType.id}"
+                    th:text="${facType.name}"></option>
         </select>
     </div>
 
-    <!-- 2 column grid layout with text inputs for the first and last names -->
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
                 <label class="form-label" for="form6Example1">Tên dịch vụ</label>
-                <input type="text" id="form6Example1" class="form-control" />
+                <input type="text" id="form6Example1" class="form-control" th:field="*{name}" />
             </div>
         </div>
         <div class="col">
             <div class="form-outline">
                 <label class="form-label" for="form6Example2">Số lượng người tối đa</label>
-                <input type="text" id="form6Example2" class="form-control" />
+                <input type="text" id="form6Example2" class="form-control" th:field="*{maxPeople}" />
             </div>
         </div>
     </div>
 
-    <!-- Text input -->
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example3">Diện tích sử dụng</label>
-        <input type="text" id="form6Example3" class="form-control" />
+        <input type="text" id="form6Example3" class="form-control" th:field="*{area}" />
     </div>
 
-    <!-- Text input -->
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example4">Chi phí thuê</label>
-        <input type="text" id="form6Example4" class="form-control" />
+        <input type="text" id="form6Example4" class="form-control" th:field="*{cost}" />
     </div>
 
-    <!-- Number input -->
     <div class="form-outline mb-4">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>kiểu thuê</option>
-            <option value="1">Năm</option>
-            <option value="2">Tháng</option>
-            <option value="3">Ngày</option>
-            <option value="4">Giờ</option>
+        <select class="form-select" aria-label="Default select example"
+        th:field="*{rentType}">
+            <option value="0" selected>Kiểu thuê</option>
+            <option th:each="rent : ${rentType}"
+                    th:value="${rent.id}"
+                    th:text="${rent.name}"></option>
         </select>
     </div>
 
     <div class="form-outline mb-4" id="divStandardRoom">
         <label class="form-label" for="standardRoom">Tiêu chuẩn phòng</label>
-        <input type="text" id="standardRoom" class="form-control"/>
+        <input type="text" id="standardRoom" class="form-control" th:field="*{standardRoom}"/>
     </div>
     <div class="form-outline mb-4" id="divDescriptionOtherConvenience">
         <label class="form-label" for="descriptionOtherConvenience">Mô tả tiện nghi khác</label>
-        <input type="text" id="descriptionOtherConvenience" class="form-control"/>
+        <input type="text" id="descriptionOtherConvenience" class="form-control" th:field="*{descriptionOtherConvenience}"/>
     </div>
     <div class="form-outline mb-4" id="divPoolArea">
         <label class="form-label" for="poolArea">Diện tích hồ bơi</label>
-        <input type="text" id="poolArea" class="form-control"/>
+        <input type="text" id="poolArea" class="form-control" th:field="*{poolArea}"/>
     </div>
     <div class="form-outline mb-4" id="divNumberOfFloors">
         <label class="form-label" for="numberOfFloors">Số tầng</label>
-        <input type="text" id="numberOfFloors" class="form-control"/>
+        <input type="text" id="numberOfFloors" class="form-control" th:field="*{numberOfFloors}"/>
     </div>
     <div class="form-outline mb-4" id="divFacilityFree">
         <label class="form-label" for="facilityFree">Dịch vụ miễn phí đi kèm</label>
-        <input type="text" id="facilityFree" class="form-control"/>
+        <input type="text" id="facilityFree" class="form-control" th:field="*{facilityFree}"/>
     </div>
 
-    <!-- Submit button -->
     <button type="submit" class="btn btn-primary btn-block mb-4">Lưu</button>
 </form>
 </div>

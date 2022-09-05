@@ -25,7 +25,7 @@ public class BlogService implements IBlogService {
     public Page<Blog> findAll(Pageable pageable, String search, Category category) {
         Page<Blog> blogPage = null;
         if (category==null){
-            blogPage =  iBlogRepository.findAllByDescriptionContaining(pageable,search);
+            blogPage =  iBlogRepository.findByDescriptionContaining(pageable,search);
         }else {
             blogPage =  iBlogRepository.findAllByDescriptionContainingAndCategory(pageable,search,category);
         }
@@ -61,5 +61,10 @@ public class BlogService implements IBlogService {
     public List<Blog> findAllByCatelory(int id) {
         Category category = iCategoryService.findById(id);
         return iBlogRepository.findAllByCategory(category);
+    }
+
+    @Override
+    public Page<Blog> findAllBlogPage(Pageable pageable, String search) {
+        return iBlogRepository.findByDescriptionContaining(pageable,search);
     }
 }
