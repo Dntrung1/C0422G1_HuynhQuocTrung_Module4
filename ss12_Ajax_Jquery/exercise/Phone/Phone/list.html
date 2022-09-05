@@ -33,6 +33,7 @@
             </div>
             <div class="modal-body">
                 Bạn có chắc chắn xóa không?
+                <input type="hidden" id="deleteInput">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -64,7 +65,7 @@
                                 <button class="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#deleteModal"
-                    id="setIdToFormDelete" value="${phoneList[i].id}">
+                    onclick="setIdToFormDelete(${phoneList[i].id})">
                 Xóa
             </button>
                         </td>
@@ -78,8 +79,13 @@
         });
     }
 
+    function setIdToFormDelete(id){
+        document.getElementById("deleteInput").value = id;
+    }
+
     $("#submitFormDelete").click(function() {
-        let id = $("#setIdToFormDelete").val();
+        let id = $("#deleteInput").val();
+        alert(id)
         $.ajax({
             type: "GET",
             url: "http://localhost:8080/phoneRests/delete?id=" + id,

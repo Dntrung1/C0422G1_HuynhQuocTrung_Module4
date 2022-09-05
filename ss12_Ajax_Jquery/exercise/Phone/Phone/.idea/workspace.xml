@@ -19,42 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6b83066c-d87e-4250-8231-55bcdb5970d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/model/facility/Facility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/model/facility/FacilityType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/model/facility/RentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/repository/IFacilityRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/repository/IFacilityTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/repository/IRentTypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/IFacilityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/IFacilityTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/IRentTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/impl/FacilityService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/impl/FacilityTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/service/impl/RentTypeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/create.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/jquery-3.6.0.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Phones/src/main/java/com/codegym/controller/PhoneRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Phones/src/main/java/com/codegym/model/Phone.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Phones/src/main/java/com/codegym/repository/IPhoneRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Phones/src/main/java/com/codegym/service/IPhoneService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Phones/src/main/java/com/codegym/service/impl/PhoneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/controller/FacilityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/controller/FacilityController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/model/customer/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/java/com/codegym/model/customer/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/resources/templates/customer/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/resources/templates/customer/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/resources/templates/facility/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../case_study/Furama/src/main/resources/templates/facility/create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/BlogRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/BlogRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/CategoryRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/controller/CategoryRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/repository/IBlogRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/repository/IBlogRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/IBlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/IBlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/impl/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/impl/BlogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/impl/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../ss11_Web_Service_RESTful/exercise/Category/src/main/java/com/codegym/service/impl/CategoryService.java" afterDir="false" />
-    </list>
+    <list default="true" id="6b83066c-d87e-4250-8231-55bcdb5970d8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1662364317519</updated>
       <workItem from="1662364320003" duration="2715000" />
+      <workItem from="1662367573047" duration="5861000" />
     </task>
     <servers />
   </component>
@@ -115,5 +81,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
