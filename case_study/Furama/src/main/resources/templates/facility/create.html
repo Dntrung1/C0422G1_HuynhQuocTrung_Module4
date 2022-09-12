@@ -12,7 +12,7 @@
 <form action="/facility/saveFacility" method="post" th:object="${facility}">
     <div class="form-outline mb-4">
         <select class="form-select" aria-label="Default select example"
-                name="code" id="selectService" th:field="*{facilityType}" onchange="displayInput()">
+                id="selectService" th:field="*{facilityType}" onchange="displayInput()">
             <option value="0" selected>Loại dịch vụ</option>
             <option th:each="facType : ${facilityType}"
                     th:value="${facType.id}"

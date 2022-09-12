@@ -23,7 +23,9 @@ public class MainController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Principal principal) {
-
+        if (principal == null){
+            return "redirect:/login";
+        }
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
 
         String userInfo = WebUtils.toString(loginedUser);

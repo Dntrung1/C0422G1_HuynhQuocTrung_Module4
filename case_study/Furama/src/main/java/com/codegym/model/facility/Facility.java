@@ -1,6 +1,9 @@
 package com.codegym.model.facility;
 
+import com.codegym.model.contact.Contact;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "facility")
@@ -12,7 +15,6 @@ public class Facility {
     private double area;
     private double cost;
     private int maxPeople;
-    private String code;
     private String standardRoom;
     private String descriptionOtherConvenience;
     private double poolArea;
@@ -27,17 +29,16 @@ public class Facility {
     @JoinColumn(name = "rent_type", referencedColumnName = "id")
     private RentType rentType;
 
-    public Facility() {
-    }
+    @OneToMany(mappedBy = "facility")
+    private List<Contact> contacts;
 
-    public Facility(Integer idService, String name, double area, double cost, int maxPeople, String code, String standardRoom, String descriptionOtherConvenience,
-                    double poolArea, int numberOfFloors, String facilityFree, FacilityType facilityType, RentType rentType) {
+    public Facility(Integer idService, String name, double area, double cost, int maxPeople, String standardRoom, String descriptionOtherConvenience, double poolArea,
+                    int numberOfFloors, String facilityFree, FacilityType facilityType, RentType rentType, List<Contact> contacts) {
         this.idService = idService;
         this.name = name;
         this.area = area;
         this.cost = cost;
         this.maxPeople = maxPeople;
-        this.code = code;
         this.standardRoom = standardRoom;
         this.descriptionOtherConvenience = descriptionOtherConvenience;
         this.poolArea = poolArea;
@@ -45,6 +46,34 @@ public class Facility {
         this.facilityFree = facilityFree;
         this.facilityType = facilityType;
         this.rentType = rentType;
+        this.contacts = contacts;
+    }
+
+    public Facility() {
+    }
+
+    public Facility(Integer idService, String name, double area, double cost, int maxPeople, String standardRoom, String descriptionOtherConvenience,
+                    double poolArea, int numberOfFloors, String facilityFree, FacilityType facilityType, RentType rentType) {
+        this.idService = idService;
+        this.name = name;
+        this.area = area;
+        this.cost = cost;
+        this.maxPeople = maxPeople;
+        this.standardRoom = standardRoom;
+        this.descriptionOtherConvenience = descriptionOtherConvenience;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
+        this.facilityFree = facilityFree;
+        this.facilityType = facilityType;
+        this.rentType = rentType;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     public Integer getIdService() {
@@ -85,14 +114,6 @@ public class Facility {
 
     public void setMaxPeople(int maxPeople) {
         this.maxPeople = maxPeople;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getStandardRoom() {

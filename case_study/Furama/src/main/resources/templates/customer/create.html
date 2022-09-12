@@ -9,14 +9,15 @@
 <body>
 <nav th:replace="~{common :: nav}"></nav>
 <div class="container m-3">
-<form action="/customer/savecustomer" method="post" th:object="${customer}">
+<form action="/customer/savecustomer" method="post" th:object="${customerDto}">
     <!-- 2 column grid layout with text inputs for the first and last names -->
     <div class="row mb-4">
         <div class="col">
             <div class="form-outline">
                 <label class="form-label" for="form6Example1">Họ tên</label>
-                <input type="text" id="form6Example1" class="form-control" th:field="*{customerName}" />
+                <input type="text" id="form6Example1" class="form-control" th:field="*{customerName}"/>
             </div>
+            <p th:errors="*{customerName}"></p>
         </div>
         <div class="col">
             <div class="form-outline">
@@ -34,26 +35,30 @@
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example4">Số CMND</label>
         <input type="text" id="form6Example4" class="form-control" th:field="*{idCard}" />
+        <p th:errors="*{idCard}"></p>
     </div>
 
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example5">Số điện thoại</label>
         <input type="text" id="form6Example5" class="form-control" th:field="*{phone}" />
+        <p th:errors="*{phone}"></p>
     </div>
 
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example6">Email</label>
         <input type="email" id="form6Example6" class="form-control" th:field="*{email}" />
+        <p th:errors="*{email}"></p>
     </div>
 
     <div class="form-outline mb-4">
         <label class="form-label" for="form6Example6">Đỉa chỉ</label>
         <input type="text" id="form6Example7" class="form-control" th:field="*{address}" />
+        <p th:errors="*{address}"></p>
     </div>
 
     <div class="form-outline mb-4">
         <label>Loại khách</label>
-        <select class="form-select" type="text" th:field="*{customerType}">
+        <select class="form-select" type="text" th:field="*{customerTypeDto}">
             <option th:each="cus : ${customertype}"
                     th:value="${cus.idCustomerType}"
                     th:text="${cus.name}"></option>

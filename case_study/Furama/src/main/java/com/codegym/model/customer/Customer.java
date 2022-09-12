@@ -1,10 +1,12 @@
 package com.codegym.model.customer;
 
+import com.codegym.model.contact.Contact;
 import jdk.nashorn.internal.objects.annotations.Getter;
 import jdk.nashorn.internal.objects.annotations.Setter;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customer")
@@ -29,6 +31,25 @@ public class Customer {
     @JoinColumn(name = "customer_type", referencedColumnName = "idCustomerType")
     private CustomerType customerType;
 
+    @OneToMany(mappedBy = "customer")
+    private List<Contact> contacts;
+
+    public Customer(Integer idCustomer, String customerName, String birthday, boolean gender, String idCard,
+                    String phone, String email, String address, boolean customerStatus, CustomerType customerType,
+                    List<Contact> contacts) {
+        this.idCustomer = idCustomer;
+        this.customerName = customerName;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.customerStatus = customerStatus;
+        this.customerType = customerType;
+        this.contacts = contacts;
+    }
+
     public Customer(Integer idCustomer, String customerName, String birthday, boolean gender, String idCard,
                     String phone, String email, String address, boolean customerStatus, CustomerType customerType) {
         this.idCustomer = idCustomer;
@@ -44,6 +65,14 @@ public class Customer {
     }
 
     public Customer() {
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     public Integer getIdCustomer() {

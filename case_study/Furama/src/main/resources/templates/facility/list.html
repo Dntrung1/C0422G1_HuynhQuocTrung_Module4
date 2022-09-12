@@ -8,21 +8,34 @@
 <body>
 <nav th:replace="~{common :: nav}"></nav>
 <div class="m-3">
+    <p th:if="${mess != null}">
+        <span th:text="${mess}"></span>
+    </p>
+</div>
+<div class="m-3">
     <a class="btn btn-primary" href="/facility/create">Thêm mới</a>
 </div>
 <table class="table table-success table-striped">
     <tr>
         <th>STT</th>
-        <th>STT</th>
-        <th>STT</th>
+        <th>Tên dịch vụ</th>
+        <th>Diện tích sử dụng</th>
+        <th>Chi phí thuê</th>
+        <th>Số người tối đa</th>
+        <th>Kiểu thuê</th>
+        <th>Loại dịch vụ</th>
         <th colspan="2">Chức Năng</th>
     </tr>
-    <tr>
-        <td>abc</td>
-        <td>abc</td>
-        <td>abc</td>
+    <tr th:each="fac, loop : ${listFacility} ">
+        <td th:text="${loop.count}"></td>
+        <td th:text="${fac.name}"></td>
+        <td th:text="${fac.area}"></td>
+        <td th:text="${fac.cost}"></td>
+        <td th:text="${fac.maxPeople}"></td>
+        <td th:text="${fac.rentType.name}"></td>
+        <td th:text="${fac.facilityType.name}"></td>
         <td>
-            <a class="btn btn-warning" href="#">Chỉnh sửa</a>
+            <a class="btn btn-warning" th:href="@{/facility/showUpdate(id=${fac.idService})}">Chỉnh sửa</a>
         </td>
         <td>
             <button class="btn btn-danger"
