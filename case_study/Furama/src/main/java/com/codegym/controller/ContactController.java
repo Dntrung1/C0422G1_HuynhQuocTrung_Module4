@@ -1,8 +1,6 @@
 package com.codegym.controller;
 
-import com.codegym.model.contact.AttachFacility;
 import com.codegym.model.contact.Contact;
-import com.codegym.model.contact.ContactDetail;
 import com.codegym.service.IAttachFacilityService;
 import com.codegym.service.IContactService;
 import com.codegym.service.IContractDetailService;
@@ -11,11 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -28,6 +25,7 @@ public class ContactController {
     public String listContact(Model model, @PageableDefault(size = 5)Pageable pageable){
         model.addAttribute("listContact",iContactService.findAll(pageable));
         model.addAttribute("listAttachFacility",iAttachFacilityService.findAll());
+        model.addAttribute("contract",new Contact());
         return "contact/list";
     }
 
@@ -40,24 +38,7 @@ public class ContactController {
 
     @PostMapping("/createContractDetail")
     public String createContractDetail(@RequestParam int idContract, @RequestParam String[] idAttachFacility){
-        String[] arrContractDetail = idAttachFacility;
-        System.out.println(Arrays.toString(arrContractDetail));
-        List<String> contractDetailList = new ArrayList<>();
-        for (int i = 0; i < arrContractDetail.length; i++) {
-            if (!arrContractDetail[i].equals("")){
-                contractDetailList.add(arrContractDetail[i]);
-            }
-        }
-        System.out.println(contractDetailList);
-        for (int i = 0; i < contractDetailList.size(); i++) {
-                AttachFacility attachFacility = iAttachFacilityService.findById(Integer.parseInt(contractDetailList.get(i)));
-                Contact contact = iContactService.findById(idContract);
-                ContactDetail contactDetails = new ContactDetail(Integer.parseInt(contractDetailList.get(i+1)),
-                        attachFacility,contact);
-                iContractDetailService.createContractDetail(contactDetails);
-            System.out.println(contractDetailList);
-                i++;
-        }
+        iContractDetailService.createContractDetail(idContract,idAttachFacility);
         return "redirect:/contact/list";
     }
 }

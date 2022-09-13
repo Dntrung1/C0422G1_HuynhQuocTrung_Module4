@@ -16,6 +16,7 @@ public class Contact {
     private String startDate;
     private String endDate;
     private Double deposit;
+    private Double total;
 
     @ManyToOne
     @JoinColumn(name = "employee", referencedColumnName = "idEmployee")
@@ -32,11 +33,24 @@ public class Contact {
     @OneToMany(mappedBy = "contact")
     private List<ContactDetail> contactDetails;
 
-    public Contact(int idContact, String startDate, String endDate, Double deposit, Employee employee, Customer customer, Facility facility, List<ContactDetail> contactDetails) {
+    public Contact(int idContact, String startDate, String endDate, Double deposit,
+                   Employee employee, Customer customer, Facility facility, List<ContactDetail> contactDetails) {
         this.idContact = idContact;
         this.startDate = startDate;
         this.endDate = endDate;
         this.deposit = deposit;
+        this.employee = employee;
+        this.customer = customer;
+        this.facility = facility;
+        this.contactDetails = contactDetails;
+    }
+
+    public Contact(int idContact, String startDate, String endDate, Double deposit, Double total, Employee employee, Customer customer, Facility facility, List<ContactDetail> contactDetails) {
+        this.idContact = idContact;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.deposit = deposit;
+        this.total = total;
         this.employee = employee;
         this.customer = customer;
         this.facility = facility;
@@ -54,6 +68,14 @@ public class Contact {
         this.employee = employee;
         this.customer = customer;
         this.facility = facility;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 
     public List<ContactDetail> getContactDetails() {
