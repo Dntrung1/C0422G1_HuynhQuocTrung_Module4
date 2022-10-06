@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<h1>Chi tiết giao dịch</h1>
+<div>
+    <p>Mã giao dich:</p>
+    <span th:text="${detail.id}"></span>
+</div>
+<div>
+    <p>Loại bất động sản:</p>
+    <span th:text="${detail.typeService}"></span>
+</div>
+<div>
+    <p>Ngày giao dich:</p>
+    <span th:text="${detail.date}"></span>
+</div>
+<div>
+    <p>Đơn giá:</p>
+    <span th:text="${detail.gia}"></span>
+</div>
+<div>
+    <p>Diện tích:</p>
+    <span th:text="${detail.area}"></span>
+</div>
+<div>
+    <p>Tên khách hàng:</p>
+    <span th:text="${detail.customer.nameCustomer}"></span>
+</div>
+<div>
+    <p>Số điện thoại:</p>
+    <span th:text="${detail.customer.phone}"></span>
+</div>
+<div>
+    <p>Email:</p>
+    <span th:text="${detail.customer.email}"></span>
+</div>
+
+</body>
+</html>

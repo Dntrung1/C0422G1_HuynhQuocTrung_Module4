@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common :: css}"></th:block>
+</head>
+<body>
+<div class="container m-3">
+    <form action="/save" method="post" th:object="${transactionDto}">
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <label>Tên khách hàng</label>
+                    <select class="form-select" type="text" th:field="*{customer}">
+                        <option th:each="cus : ${customerList}"
+                                th:value="${cus.idCustomer}"
+                                th:text="${cus.nameCustomer}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <label>Loại dịch vụ</label>
+                    <select class="form-select" th:field="*{typeService}">
+                        <option value="Đất">Đất</option>
+                        <option value="Nhà và đất">Nhà và đất</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example3">Ngày giao dịch</label>
+            <input type="date" id="form6Example3" class="form-control" th:field="*{date}" />
+        </div>
+        <p th:errors="*{date}"></p>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example4">Đơn giá</label>
+            <input type="number" id="form6Example4" class="form-control" th:field="*{gia}" />
+        </div>
+        <p th:errors="*{gia}"></p>
+        <div class="form-outline mb-4">
+            <label class="form-label" for="form6Example5">Diện tích</label>
+            <input type="number" id="form6Example5" class="form-control" th:field="*{area}" />
+        </div>
+        <p th:errors="*{area}"></p>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Lưu</button>
+    </form>
+</div>
+<script th:replace="~{common :: js}"></script>
+</body>
+</html>

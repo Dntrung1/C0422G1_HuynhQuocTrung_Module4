@@ -1,0 +1,66 @@
+<h1>Thêm mới</h1>
+<div class="container-fluid">
+<form [formGroup]="carCreate" (ngSubmit)="create()">
+  <div class="mb-3">
+    <label for="exampleInputsoXe" class="form-label">Biển số xe</label>
+    <input formControlName="soXe" name="soXe" type="text" class="form-control"
+           id="exampleInputsoXe">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputloaiXe" class="form-label">Loại xe</label>
+    <input formControlName="loaiXe" name="loaiXe" type="text" class="form-control" id="exampleInputloaiXe">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.loaiXe.hasError('required') && submitter">Không để trống</p>-->
+  <div class="mb-3">
+    <label for="exampleInputtenNhaXe" class="form-label">Tên nhà xe</label>
+    <input formControlName="tenNhaXe" name="tenNhaXe" type="text" class="form-control"
+           id="exampleInputtenNhaXe">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.tenNhaXe.hasError('required') && submitter">Không để trống</p>-->
+  <div class="mb-3">
+    <label for="exampleInputsoDienThoai" class="form-label">Số điện thoại</label>
+    <input formControlName="soDienThoai" name="soDienThoai" type="text" class="form-control"
+           id="exampleInputsoDienThoai">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.soDienThoai.hasError('required') && submitter">Không để trống</p>-->
+  <!--    <p style="color: red" *ngIf="xeUpdate.controls.soDienThoai.hasError('pattern') && submitter">Không đúng định dạng số-->
+  <!--      điện thoại</p>-->
+  <div class="mb-3">
+    <label for="exampleInputemail" class="form-label">Email</label>
+    <input formControlName="email" name="email" type="text" class="form-control"
+           id="exampleInputemail">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.email.hasError('required') && submitter">Không để trống</p>-->
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.email.hasError('email') && submitter">Email không đúng định dạng</p>-->
+  <div class="mb-3">
+    <label for="exampleInputgioDi" class="form-label">Giờ đi</label>
+    <input formControlName="gioDi" name="gioDi" type="text" class="form-control"
+           id="exampleInputgioDi">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.gioDi.hasError('required') && submitter">Không để trống</p>-->
+  <div class="mb-3">
+    <label for="exampleInputgioDen" class="form-label">Giờ đến</label>
+    <input formControlName="gioDen" name="gioDen" type="text" class="form-control"
+           id="exampleInputgioDen">
+  </div>
+<!--  <p style="color: red" *ngIf="xeUpdate.controls.gioDen.hasError('required') && submitter">Không để trống</p>-->
+  <div class="form-outline mb-4" formGroupName="diemDi">
+    <label>Điểm đi</label>
+    <select formControlName="id" class="form-select" type="text">
+      <option *ngFor="let diemDi of address" [ngValue]="diemDi.id">{{diemDi.ten}}</option>
+    </select>
+  </div>
+  <div class="form-outline mb-4" formGroupName="diemDen">
+    <label>Điểm đến</label>
+    <select formControlName="id" class="form-select" type="text">
+      <option *ngFor="let diemDen of address" [ngValue]="diemDen.id">{{diemDen.ten}}</option>
+    </select>
+  </div>
+  <div>
+    <button class="btn btn-info" [routerLink]="['']">Quay lại</button>
+  </div>
+  <div style="margin: 10px">
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </div>
+</form>
+</div>

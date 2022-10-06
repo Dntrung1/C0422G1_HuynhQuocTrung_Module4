@@ -1,0 +1,59 @@
+<button [routerLink] = "['/create']">Thêm mới</button>
+<h1>Danh sách các xe đăng ký ở bến xe XYZ</h1>
+
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>Số xe</th>
+    <th>Loại xe</th>
+    <th>Điểm đi</th>
+    <th>Điểm đến</th>
+    <th>Số điện thoại</th>
+    <th>Email</th>
+    <th>Giờ đi</th>
+    <th>Giờ đến</th>
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let xe of xes">
+  <tr *ngIf="!xe.trangThai" >
+      <td>{{xe.soXe}}</td>
+      <td>{{xe.loaiXe}}</td>
+      <td>{{xe.diemDi.ten}}</td>
+      <td>{{xe.diemDen.ten}}</td>
+      <td>{{xe.soDienThoai}}</td>
+      <td>{{xe.email}}</td>
+      <td>{{xe.gioDi}}</td>
+      <td>{{xe.gioDen}}</td>
+      <td>
+        <button class="btn btn-warning" >Chỉnh sửa</button>
+      </td>
+      <td>
+        <button (click)="delete(xe.id, xe.soXe, xe)" type="button" class="btn btn-danger" data-bs-toggle="modal"
+                data-bs-target="#exampleModalDelete">
+          Xóa
+        </button>
+      </td>
+  </tr>
+  </tbody>
+</table>
+<div class="modal fade" id="exampleModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: red">Xác nhận xóa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có đồng ý xóa thông tin của xe khách có số xe {{soXeDelete}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+        <button (click)="submitDelete(idDelete, xeDelete)" type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Xóa
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

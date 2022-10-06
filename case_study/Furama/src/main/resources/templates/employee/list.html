@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{common :: css}"></th:block>
+</head>
+<body>
+<div class="m-3">
+    <a class="btn btn-primary" href="/employee/create">Thêm mới</a>
+</div>
+<table class="table table-striped">
+    <tr>
+        <th>Tên</th>
+        <th>id</th>
+    </tr>
+    <tr th:each="em: ${listEmployee}">
+        <td th:text="${em.name}"></td>
+        <td th:text="${em.idEmployee}"></td>
+    </tr>
+</table>
+</body>
+</html>
